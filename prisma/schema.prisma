@@ -1,0 +1,41 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model BeritaLelayu {
+  id              String         @id @default(uuid())
+  namaAlmarhum    String
+  usia            Int
+  padukuhan       String
+  hariMeninggal   String
+  tanggalMeninggal String
+  jamMeninggal    String
+  hariPemakaman   String
+  tanggalPemakaman String
+  jamPemakaman    String
+  makamLengkap    String
+  
+  pihakBerduka    PihakBerduka[] 
+
+  createdAt       DateTime @default(now())
+  
+  @@map("berita_lelayu") 
+}
+
+model PihakBerduka {
+  id              String         @id @default(uuid())
+  nama            String
+  hubungan        String?
+  
+  beritaLelayuId  String
+  beritaLelayu    BeritaLelayu   @relation(fields: [beritaLelayuId], references: [id])
+
+  @@map("pihak_berduka")
+}
