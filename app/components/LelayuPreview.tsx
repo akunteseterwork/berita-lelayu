@@ -92,13 +92,13 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
 
   const AlignedRow: React.FC<{ label: string; value: string | React.ReactNode }> = ({ label, value }) => (
     <div style={{ display: 'flex', justifyContent: 'center', margin: '2px 0' }}>
-      <span style={{ minWidth: '110px', maxWidth: '110px', textAlign: 'right', fontSize: '13.5px' }}>
+      <span style={{ minWidth: '110px', maxWidth: '110px', textAlign: 'right', fontSize: '18px' }}>
         {label}
       </span>
-      <span style={{ margin: '0 12px', fontSize: '13.5px', fontWeight: 'bold' }}>
+      <span style={{ margin: '0 12px', fontSize: '18px', fontWeight: 'bold' }}>
         :
       </span>
-      <span style={{ fontWeight: '600', textAlign: 'left', fontSize: '13.5px' }}>
+      <span style={{ fontWeight: '600', textAlign: 'left', fontSize: '18px' }}>
         {value}
       </span>
     </div>
@@ -121,48 +121,45 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             margin: '0 auto',
             fontFamily: 'serif', 
             color: '#000000',
-            fontSize: '13.5px', 
+            fontSize: '18px', 
             boxSizing: 'border-box'
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '18px' }}>
           <p style={{ 
               fontWeight: '800', 
-              fontSize: '20px', 
+              fontSize: '26px', 
               marginBottom: '5px',
               letterSpacing: '2px',
           }}>
             PAWARTOS LELAYU
           </p>
-          <p style={{ fontSize: '12px', fontStyle: 'italic', color: '#555555' }}>
-            (Berita Dukacita)
-          </p>
         </div>
 
-        <p style={{ textAlign: 'center', fontSize: '13.5px', marginBottom: '12px' }}>
+        <p style={{ textAlign: 'center', fontSize: '18px', marginBottom: '12px' }}>
           Assalamualaikum Wr. Wb.
         </p>
         
         <div style={{ textAlign: 'center', margin: '12px 0' }}>
           <p style={{ 
               fontWeight: '700', 
-              fontSize: '16px', 
+              fontSize: '18px', 
               color: '#000000',
               letterSpacing: '1px',
               marginBottom: '4px'
           }}>
             إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ
           </p>
-          <p style={{ fontSize: '12px', fontStyle: 'italic', color: '#555555' }}>
+          <p style={{ fontSize: '18px', fontStyle: 'italic', color: '#555555' }}>
             INNALILLAHI WA INNA ILAIHI ROJI'UN
           </p>
         </div>
         
         <p style={{ 
             textAlign: 'center', 
-            marginTop: '12px',
+            marginTop: '18px',
             marginBottom: '15px',
-            fontSize: '13.5px'
+            fontSize: '18px'
         }}>
           Sampun katimbalan sowan wonten ngarso dalem Allah SWT Panjenenganipun:
         </p>
@@ -178,43 +175,43 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
           }}>
             {data.namaAlmarhum || '{{nama_almarhum}}'}
           </p>
-          <p style={{ fontSize: '14px', fontWeight: '600', marginBottom: '5px' }}>
-            Yuswa: {data.usia || '{{usia}}'} Taun
+          <p style={{ fontSize: '18px', fontWeight: '600', marginBottom: '5px' }}>
+            Yuswa: {data.usia || '{{usia}}'} Tahun
           </p>
-          <p style={{ fontSize: '13.5px' }}>
+          <p style={{ fontSize: '18px' }}>
             Ingkang pidalem wonten ing Padukuhan <strong>{data.padukuhan || '{{padukuhan}}'}</strong>, Kalurahan Krembangan
           </p>
         </div>
 
        <div style={{ marginTop: '18px', marginBottom: '15px', textAlign: 'center' }}>
-          <p style={{ fontWeight: '700', marginBottom: '6px', fontSize: '14px', color: '#333333' }}>
+          <p style={{ fontWeight: '700', marginBottom: '6px', fontSize: '18px', color: '#333333' }}>
             Almarhum Sedo Rikolo:
           </p>
-          <p style={{ margin: '2px 0', fontSize: '13.5px' }}>
+          <p style={{ margin: '2px 0', fontSize: '18px' }}>
             Dinten : <span style={{ fontWeight: '600' }}>{data.hariMeninggal || '...'}</span>
           </p>
-          <p style={{ margin: '2px 0', fontSize: '13.5px' }}>
+          <p style={{ margin: '2px 0', fontSize: '18px' }}>
             Tanggal : <span style={{ fontWeight: '600' }}>{tanggalMatiFormatted || '...'}</span>
           </p>
-          <p style={{ margin: '2px 0', fontSize: '13.5px' }}>
+          <p style={{ margin: '2px 0', fontSize: '18px' }}>
             Wanci Jam : <span style={{ fontWeight: '600' }}>{(data.jamMeninggal || '...') + ' WIB'}</span>
           </p>
         </div>
 
         <div style={{ marginTop: '15px', marginBottom: '18px', textAlign: 'center' }}>
-          <p style={{ fontWeight: '700', marginBottom: '6px', fontSize: '14px', color: '#333333' }}>
+          <p style={{ fontWeight: '700', marginBottom: '6px', fontSize: '18px', color: '#333333' }}>
             Jenazah Badhedipun Makamaken Wonten Ing:
           </p>
-          <p style={{ margin: '2px 0', fontSize: '13.5px' }}>
+          <p style={{ margin: '2px 0', fontSize: '18px' }}>
             Dinten : <span style={{ fontWeight: '600' }}>{data.hariPemakaman || '...'}</span>
           </p>
-          <p style={{ margin: '2px 0', fontSize: '13.5px' }}>
+          <p style={{ margin: '2px 0', fontSize: '18px' }}>
             Tanggal : <span style={{ fontWeight: '600' }}>{tanggalKuburFormatted || '...'}</span>
           </p>
-          <p style={{ margin: '2px 0', fontSize: '13.5px' }}>
+          <p style={{ margin: '2px 0', fontSize: '18px' }}>
             Wanci Jam : <span style={{ fontWeight: '600' }}>{(data.jamPemakaman || '...') + ' WIB'}</span>
           </p>
-          <p style={{ margin: '2px 0', fontSize: '13.5px' }}>
+          <p style={{ margin: '2px 0', fontSize: '18px' }}>
             Makam : <span style={{ fontWeight: '600' }}>{data.makamLengkap || '...'}</span>
           </p>
         </div>
@@ -223,7 +220,7 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             textAlign: 'center',
             marginTop: '18px',
             marginBottom: '20px',
-            fontSize: '13.5px'
+            fontSize: '18px'
         }}>
           Mekaten atur pawartos lelayu meniko, mugi saget ndadosaken pamrikso.
         </p>
@@ -237,7 +234,7 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             <p style={{ 
                 fontWeight: '700', 
                 marginBottom: '8px',
-                fontSize: '14px',
+                fontSize: '18px',
                 paddingBottom: '5px',
                 display: 'inline-block'
             }}>
@@ -246,12 +243,12 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             {filteredPihakBerduka.length > 0 ? (
                 <div style={{ marginTop: '5px', textAlign: 'center', lineHeight: '1.4' }}> 
                   {filteredPihakBerduka.map((p, index) => (
-                      <p key={index} style={{ marginBottom: '2px', fontSize: '13.5px' }}>
+                      <p key={index} style={{ marginBottom: '2px', fontSize: '18px' }}>
                           <span style={{ fontWeight: '600' }}>
                             {p.nama}
                           </span>
                           {p.hubungan && (
-                              <span style={{ marginLeft: '8px', fontSize: '12.5px', fontStyle: 'italic', color: '#555555' }}>
+                              <span style={{ marginLeft: '8px', fontSize: '16px', fontStyle: 'italic', color: '#555555' }}>
                                   ({p.hubungan})
                               </span>
                           )}
@@ -265,11 +262,20 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             )}
           </div>
         </div>
-        
+        <p style={{ 
+                fontWeight: '700', 
+                marginBottom: '8px',
+                marginTop: '20px',
+                fontSize: '18px',
+                paddingBottom: '5px',
+                textAlign: 'center',
+            }}>
+              Lan Sedoyo Keluargo
+            </p>
         <p style={{ 
             textAlign: 'center',
             marginTop: '30px',
-            fontSize: '13.5px'
+            fontSize: '18px'
         }}>
           Wassalamu'alaikum Wr. Wb.
         </p>

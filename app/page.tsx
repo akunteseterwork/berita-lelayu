@@ -134,7 +134,7 @@ export default function SubmitLelayuPage() {
     
     if (dataToSend.namaAlmarhum.trim() === '' || dataToSend.padukuhan.trim() === '') {
         setStatus('error');
-        setMessage('Nama Almarhum dan Padukuhan wajib diisi.');
+        setMessage('Nama Alm./Almh dan Padukuhan wajib diisi.');
         return;
     }
 
@@ -160,18 +160,18 @@ export default function SubmitLelayuPage() {
 
       <div className="w-full max-w-4xl bg-white p-8 md:p-12 rounded-xl border border-gray-300 shadow-lg">
         <h1 className="text-3xl font-bold text-center text-gray-900 mb-2">
-          Formulir Pembuatan Berita Duka
+          Formulir Pembuatan Berita Lelayu
         </h1>
         <p className="text-gray-500 text-center mb-8 border-b pb-4">
-          Masukkan detail untuk membuat dokumen berita duka
+          Masukkan detail untuk membuat dokumen berita lelayu
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-8">
           
           <section className="space-y-5">
-            <SectionHeader title="Data Almarhum" icon={User} colorClass="text-gray-700 border-gray-300" />
+            <SectionHeader title="Data Almarhum / Almarhumah" icon={User} colorClass="text-gray-700 border-gray-300" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormInput label="Nama Almarhum" name="namaAlmarhum" value={formData.namaAlmarhum} onChange={handleChange} placeholder="Contoh: Bpk. Sastro Wijoyo" required={true}/>
+              <FormInput label="Nama Alm./Almh" name="namaAlmarhum" value={formData.namaAlmarhum} onChange={handleChange} placeholder="Contoh: Bpk. Sastro Wijoyo" required={true}/>
               <FormInput label="Usia (Tahun)" name="usia" type="number" value={formData.usia} onChange={handleChange} placeholder="Contoh: 75" />
               <div className="md:col-span-2">
                 <FormInput label="Padukuhan/Alamat" name="padukuhan" value={formData.padukuhan} onChange={handleChange} placeholder="Contoh: Padukuhan Krandekan, Kalurahan Krembangan" required={true}/>
@@ -261,7 +261,7 @@ export default function SubmitLelayuPage() {
             ) : (
                 <>
                     <Send size={20} /> 
-                    Buat Preview Pawartos
+                    Buat Berita
                 </>
             )}
           </button>
