@@ -200,7 +200,7 @@ export default function SubmitLelayuPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FormInput label="Hari (Jawa/Umum)" name="hariMeninggal" value={formData.hariMeninggal} onChange={handleChange} placeholder="Contoh: Rebo Pahing" />
               <FormInput label="Tanggal" name="tanggalMeninggal" type="date" value={formData.tanggalMeninggal} onChange={handleChange} />
-              <FormInput label="Jam Meninggal (WIB)" name="jamMeninggal" value={formData.jamMeninggal} onChange={handleChange} placeholder="Contoh: 21.00" />
+              <FormInput label="Jam Meninggal (WIB)" name="jamMeninggal" value={formData.jamMeninggal} onChange={handleChange} placeholder="Contoh: 21:00 (tanpa WIB)" />
             </div>
           </section>
 
@@ -209,7 +209,7 @@ export default function SubmitLelayuPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FormInput label="Hari Pemakaman" name="hariPemakaman" value={formData.hariPemakaman} onChange={handleChange} placeholder="Contoh: Kamis Legi" />
               <FormInput label="Tanggal Pemakaman" name="tanggalPemakaman" type="date" value={formData.tanggalPemakaman} onChange={handleChange} />
-              <FormInput label="Jam Pemakaman" name="jamPemakaman" value={formData.jamPemakaman} onChange={handleChange} placeholder="Contoh: 10.00 WIB" />
+              <FormInput label="Jam Pemakaman (WIB)" name="jamPemakaman" value={formData.jamPemakaman} onChange={handleChange} placeholder="Contoh: 14:00 (tanpa WIB)" />
             </div>
             <div className="mt-6">
               <FormInput label="Makam Lengkap" name="makamLengkap" value={formData.makamLengkap} onChange={handleChange} placeholder="Contoh: Makam Sasonoloyo, Kalurahan Krembangan" />
