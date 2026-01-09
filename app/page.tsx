@@ -188,7 +188,7 @@ export default function SubmitLelayuPage() {
             <SectionHeader title="Data Almarhum / Almarhumah" icon={User} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormInput label="Nama Alm./Almh." name="namaAlmarhum" value={formData.namaAlmarhum} onChange={handleChange} placeholder="Contoh: Bpk. Sastro Wijoyo" required={true} />
-              <FormInput label="Usia (Tahun)" name="usia" type="number" value={formData.usia} onChange={handleChange} placeholder="Contoh: 75" required={true}/>
+              <FormInput label="Usia (Tahun)" name="usia" type="number" value={formData.usia} onChange={handleChange} placeholder="Contoh: 75" required={true} />
               <div className="md:col-span-2">
                 <FormInput label="Padukuhan/Alamat" name="padukuhan" value={formData.padukuhan} onChange={handleChange} placeholder="Contoh: Kepuh Kidul" required={true} />
               </div>
@@ -198,21 +198,21 @@ export default function SubmitLelayuPage() {
           <section>
             <SectionHeader title="Waktu Meninggal" icon={Clock} />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <FormInput label="Hari (Jawa/Umum)" name="hariMeninggal" value={formData.hariMeninggal} onChange={handleChange} placeholder="Contoh: Rebo Pahing" required={true}/>
-              <FormInput label="Tanggal" name="tanggalMeninggal" type="date" value={formData.tanggalMeninggal} onChange={handleChange} required={true}/>
-              <FormInput label="Jam Meninggal (WIB)" name="jamMeninggal" value={formData.jamMeninggal} onChange={handleChange} placeholder="Contoh: 21:00 (tanpa WIB)" required={true}/>
+              <FormInput label="Hari (Jawa/Umum)" name="hariMeninggal" value={formData.hariMeninggal} onChange={handleChange} placeholder="Contoh: Rebo Pahing" required={true} />
+              <FormInput label="Tanggal" name="tanggalMeninggal" type="date" value={formData.tanggalMeninggal} onChange={handleChange} required={true} />
+              <FormInput label="Jam Meninggal (WIB)" name="jamMeninggal" value={formData.jamMeninggal} onChange={handleChange} placeholder="Contoh: 21:00 (tanpa WIB)" required={true} />
             </div>
           </section>
 
           <section>
             <SectionHeader title="Waktu & Tempat Pemakaman" icon={MapPin} />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <FormInput label="Hari Pemakaman" name="hariPemakaman" value={formData.hariPemakaman} onChange={handleChange} placeholder="Contoh: Kamis Legi" required={true}/>
-              <FormInput label="Tanggal Pemakaman" name="tanggalPemakaman" type="date" value={formData.tanggalPemakaman} onChange={handleChange} required={true}/>
-              <FormInput label="Jam Pemakaman (WIB)" name="jamPemakaman" value={formData.jamPemakaman} onChange={handleChange} placeholder="Contoh: 14:00 (tanpa WIB)" required={true}/>
+              <FormInput label="Hari Pemakaman" name="hariPemakaman" value={formData.hariPemakaman} onChange={handleChange} placeholder="Contoh: Kamis Legi" required={true} />
+              <FormInput label="Tanggal Pemakaman" name="tanggalPemakaman" type="date" value={formData.tanggalPemakaman} onChange={handleChange} required={true} />
+              <FormInput label="Jam Pemakaman (WIB)" name="jamPemakaman" value={formData.jamPemakaman} onChange={handleChange} placeholder="Contoh: 14:00 (tanpa WIB)" required={true} />
             </div>
             <div className="mt-6">
-              <FormInput label="Makam" name="makamLengkap" value={formData.makamLengkap} onChange={handleChange} placeholder="Contoh: Randu Kuning" required={true}/>
+              <FormInput label="Makam" name="makamLengkap" value={formData.makamLengkap} onChange={handleChange} placeholder="Contoh: Randu Kuning" required={true} />
             </div>
           </section>
 
@@ -262,18 +262,20 @@ export default function SubmitLelayuPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleCloseModal} />
 
-          <div className="relative bg-white w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl animate-in zoom-in-95 duration-200">
-            <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-6 py-4 border-b">
-              <h3 className="text-xl font-black text-gray-900 uppercase tracking-tighter">
-                Pratinjau Berita Lelayu
-              </h3>
-              <button onClick={handleCloseModal} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                <X size={24} className="text-gray-500" />
-              </button>
-            </div>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-4">
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleCloseModal} />
 
-            <div className="p-6 md:p-10 flex flex-col items-center">
-              <LelayuPreview data={submittedData} />
+            <div className="relative bg-white w-full h-full md:max-w-4xl md:h-[95vh] flex flex-col overflow-hidden rounded-none md:rounded-2xl shadow-2xl animate-in zoom-in-95 duration-200">
+              <div className="flex items-center justify-between bg-white px-6 py-4 border-b shrink-0">
+                <h3 className="text-xl font-black text-gray-900 uppercase tracking-tighter">Pratinjau Berita Lelayu</h3>
+                <button onClick={handleCloseModal} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                  <X size={24} className="text-gray-500" />
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-hidden bg-white">
+                <LelayuPreview data={submittedData} />
+              </div>
             </div>
           </div>
         </div>
