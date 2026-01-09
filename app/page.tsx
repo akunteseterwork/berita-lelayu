@@ -190,7 +190,7 @@ export default function SubmitLelayuPage() {
               <FormInput label="Nama Alm./Almh." name="namaAlmarhum" value={formData.namaAlmarhum} onChange={handleChange} placeholder="Contoh: Bpk. Sastro Wijoyo" required={true} />
               <FormInput label="Usia (Tahun)" name="usia" type="number" value={formData.usia} onChange={handleChange} placeholder="Contoh: 75" required={true}/>
               <div className="md:col-span-2">
-                <FormInput label="Padukuhan/Alamat" name="padukuhan" value={formData.padukuhan} onChange={handleChange} placeholder="Contoh: Padukuhan Krandekan, Kalurahan Krembangan" required={true} />
+                <FormInput label="Padukuhan/Alamat" name="padukuhan" value={formData.padukuhan} onChange={handleChange} placeholder="Contoh: Kepuh Kidul" required={true} />
               </div>
             </div>
           </section>
@@ -212,7 +212,7 @@ export default function SubmitLelayuPage() {
               <FormInput label="Jam Pemakaman (WIB)" name="jamPemakaman" value={formData.jamPemakaman} onChange={handleChange} placeholder="Contoh: 14:00 (tanpa WIB)" required={true}/>
             </div>
             <div className="mt-6">
-              <FormInput label="Alamat Makam" name="makamLengkap" value={formData.makamLengkap} onChange={handleChange} placeholder="Contoh: Makam Sasonoloyo, Kalurahan Krembangan" required={true}/>
+              <FormInput label="Makam" name="makamLengkap" value={formData.makamLengkap} onChange={handleChange} placeholder="Contoh: Randu Kuning" required={true}/>
             </div>
           </section>
 
@@ -223,7 +223,7 @@ export default function SubmitLelayuPage() {
                 <div key={index} className="flex gap-4 items-end p-5 rounded-xl border border-gray-100 bg-gray-50/30 hover:bg-gray-50 transition-colors duration-200">
                   <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormInput label="Nama Pihak Berduka" name="nama" value={p.nama} onChange={(e: any) => handleChangePihakBerduka(index, e)} placeholder="Contoh: Bpk. Bambang Sutikno" />
-                    <FormInput label="Hubungan" name="hubungan" value={p.hubungan} onChange={(e: any) => handleChangePihakBerduka(index, e)} placeholder="Contoh: Putra Almarhum" />
+                    <FormInput label="Hubungan" name="hubungan" value={p.hubungan} onChange={(e: any) => handleChangePihakBerduka(index, e)} placeholder="Contoh: Garwo/Putro" />
                   </div>
                   {formData.pihakBerduka.length > 1 && (
                     <button type="button" onClick={() => handleRemovePihakBerduka(index)} className="mb-1 p-3 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200">
