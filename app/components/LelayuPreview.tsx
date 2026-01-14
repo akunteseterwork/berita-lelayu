@@ -14,6 +14,7 @@ interface LelayuData {
   namaAlmarhum: string;
   usia: number | string;
   padukuhan: string;
+  kalurahan: string;
   hariMeninggal: string;
   tanggalMeninggal: string;
   jamMeninggal: string;
@@ -144,16 +145,16 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             <p style={{ fontSize: '16px', fontStyle: 'italic', color: '#555555' }}>INNALILLAHI WA INNA ILAIHI ROJI'UN</p>
           </div>
 
-          <p style={{ textAlign: 'center', margin: '10px 0' }}>Sampun katimbalan sowan wonten ngarso dalem Allah SWT Panjenenganipun:</p>
+          <p style={{ textAlign: 'center', margin: '10px 0' }}>Sampun katimbalan sowan wonten Ngarsa Dalem Allah SWT Panjenenganipun:</p>
 
           <div style={{ textAlign: 'center', margin: '15px 0' }}>
             <p style={{ fontSize: '32px', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px' }}>{data.namaAlmarhum || '...'}</p>
             <p style={{ fontSize: '20px', fontWeight: '600', marginBottom: '2px' }}>Yuswa: {data.usia || '...'} Tahun</p>
-            <p>Ingkang pidalem wonten ing Padukuhan <strong>{data.padukuhan || '...'}</strong>, Kalurahan Krembangan</p>
+            <p>Ingkang pidalem wonten ing Padukuhan <strong>{data.padukuhan || '...'}</strong>, Kalurahan {data.kalurahan || '...'}</p>
           </div>
 
           <div style={{ margin: '15px 0', textAlign: 'center' }}>
-            <p style={{ fontWeight: '700', marginBottom: '2px' }}>Almarhum Sedo Rikolo:</p>
+            <p style={{ fontWeight: '700', marginBottom: '2px' }}>Almarhum Seda Rikala:</p>
             <p>Dinten : <strong>{data.hariMeninggal || '...'}</strong></p>
             <p>Tanggal : <strong>{formatDate(data.tanggalMeninggal)}</strong></p>
             <p>Wanci Jam : <strong>{(data.jamMeninggal || '...') + ' WIB'}</strong></p>
@@ -167,10 +168,10 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             <p>Makam : <strong>{data.makamLengkap || '...'}</strong></p>
           </div>
 
-          <p style={{ textAlign: 'center', margin: '15px 0' }}>Mekaten atur pawartos lelayu meniko, mugi saget ndadosaken pamrikso.</p>
+          <p style={{ textAlign: 'center', margin: '15px 0' }}>Mekaten atur pawartos lelayu menika, mugi saget ndadosaken pamriksa.</p>
 
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
-            <p style={{ fontWeight: '700', marginBottom: '8px' }}>Ingkang Nandang Sungkowo:</p>
+            <p style={{ fontWeight: '700', marginBottom: '8px' }}>Ingkang Nandang Sungkawa:</p>
 
             {filteredPihakBerduka.length > 0 ? (
               <div
@@ -198,7 +199,7 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
               </div>
             ) : <p className="italic text-gray-400">(Data Keluarga Kosong)</p>}
 
-            <p style={{ fontWeight: '700', marginTop: '10px' }}>Lan Sedoyo Keluargo</p>
+            <p style={{ fontWeight: '700', marginTop: '10px' }}>Lan sedaya kulawarga</p>
           </div>
 
           <p style={{ textAlign: 'center', marginTop: '20px' }}>Wassalamu'alaikum Wr. Wb.</p>

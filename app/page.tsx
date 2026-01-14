@@ -23,6 +23,7 @@ interface LelayuData {
   namaAlmarhum: string;
   usia: number | string;
   padukuhan: string;
+  kalurahan: string;
   hariMeninggal: string;
   tanggalMeninggal: string;
   jamMeninggal: string;
@@ -37,6 +38,7 @@ const initialData: LelayuData = {
   namaAlmarhum: '',
   usia: '',
   padukuhan: '',
+  kalurahan: '',
   hariMeninggal: '',
   tanggalMeninggal: '',
   jamMeninggal: '',
@@ -189,9 +191,8 @@ export default function SubmitLelayuPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormInput label="Nama Alm./Almh." name="namaAlmarhum" value={formData.namaAlmarhum} onChange={handleChange} placeholder="Contoh: Bpk. Sastro Wijoyo" required={true} />
               <FormInput label="Usia (Tahun)" name="usia" type="number" value={formData.usia} onChange={handleChange} placeholder="Contoh: 75" required={true} />
-              <div className="md:col-span-2">
-                <FormInput label="Padukuhan/Alamat" name="padukuhan" value={formData.padukuhan} onChange={handleChange} placeholder="Contoh: Kepuh Kidul" required={true} />
-              </div>
+                <FormInput label="Padukuhan" name="padukuhan" value={formData.padukuhan} onChange={handleChange} placeholder="Contoh: Kepuh Kidul" required={true} />
+                <FormInput label="Kalurahan" name="kalurahan" value={formData.kalurahan} onChange={handleChange} placeholder="Contoh: Krembangan" required={true} />
             </div>
           </section>
 
