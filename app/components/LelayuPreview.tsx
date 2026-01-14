@@ -157,18 +157,18 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             <p style={{ fontWeight: '700', marginBottom: '2px' }}>Almarhum Seda Rikala:</p>
             <p>Dinten : <strong>{data.hariMeninggal || '...'}</strong></p>
             <p>Tanggal : <strong>{formatDate(data.tanggalMeninggal)}</strong></p>
-            <p>Wanci Tabuh : <strong>{(data.jamMeninggal || '...') + ' WIB'}</strong></p>
+            <p>Tabuh : <strong>{(data.jamMeninggal || '...') + ' WIB'}</strong></p>
           </div>
 
           <div style={{ margin: '15px 0', textAlign: 'center' }}>
             <p style={{ fontWeight: '700', marginBottom: '2px' }}>Jenazah badhe dipun sarekaken wonten ing:</p>
             <p>Dinten : <strong>{data.hariPemakaman || '...'}</strong></p>
             <p>Tanggal : <strong>{formatDate(data.tanggalPemakaman)}</strong></p>
-            <p>Wanci Tabuh : <strong>{(data.jamPemakaman || '...') + ' WIB'}</strong></p>
+            <p>Tabuh : <strong>{(data.jamPemakaman || '...') + ' WIB'}</strong></p>
             <p>Makam : <strong>{data.makamLengkap || '...'}</strong></p>
           </div>
 
-          <p style={{ textAlign: 'center', margin: '15px 0' }}>Mekaten atur pawartos lelayu menika, mugi saget ndadosaken pamriksa.</p>
+          <p style={{ textAlign: 'center', margin: '15px 0' }}>Mekaten pawartos lelayu punika, mugi saged dados kawuningan.</p>
 
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
             <p style={{ fontWeight: '700', marginBottom: '8px' }}>Ingkang Nandhang Sungkawa:</p>
