@@ -20,6 +20,7 @@ interface PihakBerduka {
 }
 
 interface LelayuData {
+  statusAlmarhum: 'almarhum' | 'almarhumah';
   namaAlmarhum: string;
   usia: number | string;
   padukuhan: string;
@@ -35,6 +36,7 @@ interface LelayuData {
 }
 
 const initialData: LelayuData = {
+  statusAlmarhum: 'almarhum',
   namaAlmarhum: '',
   usia: '',
   padukuhan: '',
@@ -189,10 +191,29 @@ export default function SubmitLelayuPage() {
           <section>
             <SectionHeader title="Data Almarhum / Almarhumah" icon={User} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col space-y-1 group">
+                <label className="text-sm font-semibold text-gray-600 group-focus-within:text-black transition-colors duration-200">
+                  Status <span className="text-red-500">*</span>
+                </label>
+                <select
+                  name="statusAlmarhum"
+                  value={formData.statusAlmarhum}
+                  onChange={(e) => setFormData(prev => ({
+                    ...prev,
+                    statusAlmarhum: e.target.value as 'almarhum' | 'almarhumah'
+                  }))}
+                  className="p-3 border border-gray-200 rounded-xl bg-gray-50/50 outline-none transition-all duration-200 text-gray-700 focus:bg-white focus:border-gray-900 focus:ring-4 focus:ring-gray-100"
+                >
+                  <option value="almarhum">Almarhum (Laki-laki)</option>
+                  <option value="almarhumah">Almarhumah (Perempuan)</option>
+                </select>
+              </div>
+
               <FormInput label="Nama Alm./Almh." name="namaAlmarhum" value={formData.namaAlmarhum} onChange={handleChange} placeholder="Contoh: Bpk. Sastro Wijoyo" required={true} />
               <FormInput label="Usia (Tahun)" name="usia" type="number" value={formData.usia} onChange={handleChange} placeholder="Contoh: 75" required={true} />
-                <FormInput label="Padukuhan" name="padukuhan" value={formData.padukuhan} onChange={handleChange} placeholder="Contoh: Kepuh Kidul" required={true} />
-                <FormInput label="Kalurahan" name="kalurahan" value={formData.kalurahan} onChange={handleChange} placeholder="Contoh: Krembangan" required={true} />
+              <FormInput label="Padukuhan" name="padukuhan" value={formData.padukuhan} onChange={handleChange} placeholder="Contoh: Kepuh Kidul" required={true} />
+              <FormInput label="Kalurahan" name="kalurahan" value={formData.kalurahan} onChange={handleChange} placeholder="Contoh: Krembangan" required={true} />
+
             </div>
           </section>
 

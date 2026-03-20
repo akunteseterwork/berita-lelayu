@@ -11,6 +11,7 @@ interface PihakBerduka {
 }
 
 interface LelayuData {
+  statusAlmarhum: 'almarhum' | 'almarhumah';
   namaAlmarhum: string;
   usia: number | string;
   padukuhan: string;
@@ -154,7 +155,9 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
           </div>
 
           <div style={{ margin: '15px 0', textAlign: 'center' }}>
-            <p style={{ fontWeight: '700', marginBottom: '2px' }}>Almarhum/Almarhumah Seda Rikala:</p>
+            <p style={{ fontWeight: '700', marginBottom: '2px' }}>
+              {data.statusAlmarhum === 'almarhum' ? 'Almarhum' : 'Almarhumah'} Seda Rikala:
+            </p>
             <p>Dinten : <strong>{data.hariMeninggal || '...'}</strong></p>
             <p>Tanggal : <strong>{formatDate(data.tanggalMeninggal)}</strong></p>
             <p>Tabuh : <strong>{(data.jamMeninggal || '...') + ' WIB'}</strong></p>
