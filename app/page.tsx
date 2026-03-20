@@ -195,18 +195,25 @@ export default function SubmitLelayuPage() {
                 <label className="text-sm font-semibold text-gray-600 group-focus-within:text-black transition-colors duration-200">
                   Status <span className="text-red-500">*</span>
                 </label>
-                <select
-                  name="statusAlmarhum"
-                  value={formData.statusAlmarhum}
-                  onChange={(e) => setFormData(prev => ({
-                    ...prev,
-                    statusAlmarhum: e.target.value as 'almarhum' | 'almarhumah'
-                  }))}
-                  className="p-3 border border-gray-200 rounded-xl bg-gray-50/50 outline-none transition-all duration-200 text-gray-700 focus:bg-white focus:border-gray-900 focus:ring-4 focus:ring-gray-100"
-                >
-                  <option value="almarhum">Almarhum (Laki-laki)</option>
-                  <option value="almarhumah">Almarhumah (Perempuan)</option>
-                </select>
+                <div className="relative">
+                  <select
+                    name="statusAlmarhum"
+                    value={formData.statusAlmarhum}
+                    onChange={(e) => setFormData(prev => ({
+                      ...prev,
+                      statusAlmarhum: e.target.value as 'almarhum' | 'almarhumah'
+                    }))}
+                    className="w-full p-3 h-[50px] border border-gray-200 rounded-xl bg-gray-50/50 outline-none transition-all duration-200 text-gray-700 focus:bg-white focus:border-gray-900 focus:ring-4 focus:ring-gray-100 appearance-none pr-10"
+                  >
+                    <option value="almarhum">Almarhum (Laki-laki)</option>
+                    <option value="almarhumah">Almarhumah (Perempuan)</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
 
               <FormInput label="Nama Alm./Almh." name="namaAlmarhum" value={formData.namaAlmarhum} onChange={handleChange} placeholder="Contoh: Bpk. Sastro Wijoyo" required={true} />
