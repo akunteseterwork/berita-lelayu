@@ -109,7 +109,6 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
 
   const filteredPihakBerduka = data.pihakBerduka.filter(p => p.nama.trim() !== '');
 
-  const useGrid = filteredPihakBerduka.length > 3;
 
   return (
     <div className="flex flex-col w-full h-full bg-white overflow-hidden">
@@ -177,28 +176,30 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             <p style={{ fontWeight: '700', marginBottom: '8px' }}>Ingkang Nandhang Sungkawa:</p>
 
             {filteredPihakBerduka.length > 0 ? (
-              <div
-                style={{
-                  display: useGrid ? 'grid' : 'block',
-                  justifyItems: 'center',
-                  gridTemplateColumns: useGrid ? '1fr 1fr' : 'none',
-                  gap: useGrid ? '5px 20px' : 'none',
-                  textAlign: 'center',
-                  lineHeight: '1.2',
-                  maxWidth: '90%',
-                  margin: '0 auto'
-                }}
-              >
-                {filteredPihakBerduka.map((p, index) => (
-                  <p key={index} style={{ marginBottom: '2px', fontSize: '17px', textAlign: useGrid ? 'left' : 'center' }}>
-                    <span style={{ fontWeight: '600' }}>{p.nama}</span>
-                    {p.hubungan && (
-                      <span style={{ marginLeft: '8px', fontSize: '15px', fontStyle: 'italic', color: '#555555' }}>
-                        ({p.hubungan})
-                      </span>
-                    )}
-                  </p>
-                ))}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                {filteredPihakBerduka.map((p, index) => {
+                  const namaWidth = p.nama.length > 20 ? '60%' : '50%';
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: `${namaWidth} 1fr`,
+                        width: namaWidth === '60%' ? '90%' : '75%',
+                        alignItems: 'baseline',
+                        marginBottom: '4px',
+                        gap: '8px',
+                      }}
+                    >
+                      <p style={{ fontWeight: '600', fontSize: '17px', margin: 0, textAlign: 'left', wordBreak: 'break-word' }}>
+                        {p.nama}
+                      </p>
+                      <p style={{ fontSize: '15px', fontStyle: 'italic', color: '#555555', margin: 0, textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        {p.hubungan ? `(${p.hubungan})` : ''}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             ) : <p className="italic text-gray-400">(Data Keluarga Kosong)</p>}
 
