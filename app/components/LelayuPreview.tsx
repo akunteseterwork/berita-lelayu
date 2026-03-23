@@ -177,15 +177,17 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
 
             {filteredPihakBerduka.length > 0 ? (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                {filteredPihakBerduka.map((p, index) => {
-                  const namaWidth = p.nama.length > 20 ? '60%' : '50%';
-                  return (
+                {(() => {
+                  const maxLength = Math.max(...filteredPihakBerduka.map(p => p.nama.length));
+                  const containerWidth = maxLength > 20 ? '70%' : '60%';
+                  const namaWidth = maxLength > 20 ? '70%' : '60%';
+                  return filteredPihakBerduka.map((p, index) => (
                     <div
                       key={index}
                       style={{
                         display: 'grid',
                         gridTemplateColumns: `${namaWidth} 1fr`,
-                        width: namaWidth === '60%' ? '90%' : '75%',
+                        width: containerWidth,
                         alignItems: 'baseline',
                         marginBottom: '4px',
                         gap: '8px',
@@ -198,8 +200,8 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
                         {p.hubungan ? `(${p.hubungan})` : ''}
                       </p>
                     </div>
-                  );
-                })}
+                  ));
+                })()}
               </div>
             ) : <p className="italic text-gray-400">(Data Keluarga Kosong)</p>}
 

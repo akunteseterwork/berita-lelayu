@@ -101,12 +101,15 @@ export default function SubmitLelayuPage() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    window.location.reload();
+    setMessage('');
+    setStatus('idle');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setMessage('');
+    setStatus('idle');
   };
 
   const handleAddPihakBerduka = () => {
@@ -128,6 +131,8 @@ export default function SubmitLelayuPage() {
     const list = [...formData.pihakBerduka];
     (list[index] as any)[name] = value;
     setFormData((prev) => ({ ...prev, pihakBerduka: list }));
+    setMessage('');
+    setStatus('idle');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -156,7 +161,6 @@ export default function SubmitLelayuPage() {
       setMessage(`Dokumen berhasil dibuat! Pratinjau muncul otomatis.`);
       setSubmittedData({ ...formData, usia: Number(formData.usia) });
       setIsModalOpen(true);
-      setFormData(initialData);
     }, 600);
   };
 
@@ -199,10 +203,14 @@ export default function SubmitLelayuPage() {
                   <select
                     name="statusAlmarhum"
                     value={formData.statusAlmarhum}
-                    onChange={(e) => setFormData(prev => ({
-                      ...prev,
-                      statusAlmarhum: e.target.value as 'almarhum' | 'almarhumah'
-                    }))}
+                    onChange={(e) => {
+                      setFormData(prev => ({
+                        ...prev,
+                        statusAlmarhum: e.target.value as 'almarhum' | 'almarhumah'
+                      }));
+                      setMessage('');
+                      setStatus('idle');
+                    }}
                     className="w-full p-3 h-[50px] border border-gray-200 rounded-xl bg-gray-50/50 outline-none transition-all duration-200 text-gray-700 focus:bg-white focus:border-gray-900 focus:ring-4 focus:ring-gray-100 appearance-none pr-10"
                   >
                     <option value="almarhum">Almarhum (Laki-laki)</option>
