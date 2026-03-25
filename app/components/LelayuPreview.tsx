@@ -175,33 +175,56 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
             <p style={{ fontWeight: '700', marginBottom: '8px' }}>Ingkang Nandhang Sungkawa:</p>
 
-            {filteredPihakBerduka.length > 0 ? (
-  <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-    {filteredPihakBerduka.map((p, index) => {
-      const rowWidth = p.nama.length > 22 ? '80%' : '60%';
-      return (
-        <div
-          key={index}
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'baseline',
-            width: rowWidth,
-            marginBottom: '4px',
-            gap: '24px',
-          }}
-        >
-          <p style={{ fontWeight: '600', fontSize: '17px', margin: 0, textAlign: 'left', wordBreak: 'break-word', flex: '1' }}>
-            {p.nama}
-          </p>
-          <p style={{ fontSize: '15px', fontStyle: 'italic', color: '#555555', margin: 0, textAlign: 'right', whiteSpace: 'nowrap' }}>
-            {p.hubungan ? `(${p.hubungan})` : ''}
-          </p>
-        </div>
-      );
-    })}
-  </div>
-) : <p className="italic text-gray-400">(Data Keluarga Kosong)</p>}
+            {filteredPihakBerduka.length > 0 ? (() => {
+              const longName = filteredPihakBerduka.some(p => p.nama.length > 22);
+              const containerWidth = longName ? '80%' : '60%';
+
+              return (
+                <div style={{
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center'
+                }}>
+                  <div style={{ width: containerWidth }}>
+                    {filteredPihakBerduka.map((p, index) => (
+                      <div
+                        key={index}
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'baseline',
+                          width: '100%',
+                          marginBottom: '4px',
+                          gap: '24px',
+                        }}
+                      >
+                        <p style={{
+                          fontWeight: '600',
+                          fontSize: '17px',
+                          margin: 0,
+                          textAlign: 'left',
+                          wordBreak: 'break-word',
+                          flex: '1'
+                        }}>
+                          {p.nama}
+                        </p>
+                        <p style={{
+                          fontSize: '15px',
+                          fontStyle: 'italic',
+                          color: '#555555',
+                          margin: 0,
+                          textAlign: 'right',
+                          whiteSpace: 'nowrap'
+                        }}>
+                          {p.hubungan ? `(${p.hubungan})` : ''}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })() : <p className="italic text-gray-400">(Data Keluarga Kosong)</p>}
 
             <p style={{ fontWeight: '700', marginTop: '10px' }}>Lan sedaya kulawarga</p>
           </div>
