@@ -73,6 +73,19 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     try {
+      const actualHeight = element.scrollHeight;
+      const pdfPageWidth = 210;
+      const pdfPageHeight = 297;
+      const imgHeightInMm = (actualHeight * pdfPageWidth) / A4_WIDTH_PX;
+
+      if (imgHeightInMm > pdfPageHeight) {
+        const fontScale = pdfPageHeight / imgHeightInMm;
+        element.style.fontSize = `${18 * fontScale}px`;
+        await new Promise((resolve) => setTimeout(resolve, 200));
+      }
+
+      const scaledHeight = element.scrollHeight;
+
       const canvas = await html2canvas(element, {
         scale: 3,
         useCORS: true,
@@ -80,9 +93,9 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
         backgroundColor: "#ffffff",
         logging: false,
         width: A4_WIDTH_PX,
-        height: A4_HEIGHT_PX,
+        height: scaledHeight,
         windowWidth: A4_WIDTH_PX,
-        windowHeight: A4_HEIGHT_PX,
+        windowHeight: scaledHeight,
         scrollX: 0,
         scrollY: 0,
         onclone: (clonedDoc) => {
@@ -91,17 +104,21 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             clonedElement.style.transform = 'scale(1)';
             clonedElement.style.margin = '0';
             clonedElement.style.width = `${A4_WIDTH_PX}px`;
-            clonedElement.style.height = `${A4_HEIGHT_PX}px`;
+            clonedElement.style.height = `${scaledHeight}px`;
           }
         }
       });
 
+      element.style.fontSize = '';
+
       const imgData = canvas.toDataURL('image/jpeg', 1.0);
       const pdf = new jsPDF('p', 'mm', 'a4');
-      pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+      const finalHeightInMm = (scaledHeight * pdfPageWidth) / A4_WIDTH_PX;
+      pdf.addImage(imgData, 'JPEG', 0, 0, pdfPageWidth, finalHeightInMm);
       pdf.save(`Pawartos_Lelayu_${data.namaAlmarhum.replace(/\s/g, '_')}.pdf`);
     } catch (error) {
       console.error("PDF Capture Error:", error);
+      printRef.current!.style.fontSize = '';
     } finally {
       setIsGenerating(false);
     }
@@ -124,10 +141,10 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             width: `${A4_WIDTH_PX}px`,
             minHeight: `${A4_HEIGHT_PX}px`,
             padding: '2cm 2.5cm',
-            lineHeight: '1.6',
+            lineHeight: '1.22',
             fontFamily: 'serif',
             color: '#000000',
-            fontSize: '18px',
+            fontSize: '20px',
             boxSizing: 'border-box',
             transform: `scale(${isGenerating ? 1 : scale})`,
             marginBottom: isGenerating ? '0px' : `calc(-${A4_HEIGHT_PX}px * (1 - ${scale}))`,
@@ -135,101 +152,97 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
           }}
         >
           <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-            <p style={{ fontWeight: '800', fontSize: '28px', letterSpacing: '2px' }}>PAWARTOS LELAYU</p>
+            <p style={{ fontWeight: '800', fontSize: '1.4em', letterSpacing: '2px', textDecoration: 'underline' }}>PAWARTOS LELAYU</p>
           </div>
 
-          <p style={{ textAlign: 'center', marginBottom: '10px' }}>Assalamualaikum Wr. Wb.</p>
+          <p style={{ marginBottom: '8px' }}>Assalamualaikum Wr. Wb.</p>
 
-          <div style={{ textAlign: 'center', margin: '10px 0' }}>
-            <p style={{ fontWeight: '700', fontSize: '24px', marginBottom: '2px' }}>إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
-            <p style={{ fontSize: '16px', fontStyle: 'italic', color: '#555555' }}>INNALILLAHI WA INNA ILAIHI ROJI'UN</p>
+          <div style={{ margin: '8px 0' }}>
+            <p style={{ fontWeight: '700', fontSize: '1.3em', marginBottom: '2px' }}>إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
+            <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#555555' }}>INNALILLAHI WA INNA ILAIHI ROJI'UN</p>
           </div>
 
-          <p style={{ textAlign: 'center', margin: '10px 0' }}>Sampun katimbalan sowan wonten Ngarsa Dalem Allah SWT Panjenenganipun:</p>
+          <p style={{ margin: '8px 0' }}>Sampun katimbalan sowan wonten Ngarsa Dalem Allah SWT Panjenenganipun:</p>
 
-          <div style={{ textAlign: 'center', margin: '15px 0' }}>
-            <p style={{ fontSize: '32px', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px' }}>{data.namaAlmarhum || '...'}</p>
-            <p style={{ fontSize: '20px', fontWeight: '600', marginBottom: '2px' }}>Yuswa: {data.usia || '...'} Tahun</p>
-            <p>Ingkang pidalem wonten ing Padukuhan <strong>{data.padukuhan || '...'}</strong>, Kalurahan {data.kalurahan || '...'}</p>
+          <div style={{ textAlign: 'center', margin: '12px 0' }}>
+            <p style={{ fontSize: '1.4em', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', textDecoration: 'underline' }}>{data.namaAlmarhum || '...'}</p>
+            <p style={{ fontSize: '1.1em', fontWeight: '600', marginBottom: '2px' }}>Yuswa: {data.usia || '...'} Tahun</p>
           </div>
 
-          <div style={{ margin: '15px 0', textAlign: 'center' }}>
-            <p style={{ fontWeight: '700', marginBottom: '2px' }}>
-              {data.statusAlmarhum === 'almarhum' ? 'Almarhum' : 'Almarhumah'} Seda Rikala:
-            </p>
-            <p>Dinten : <strong>{data.hariMeninggal || '...'}</strong></p>
-            <p>Tanggal : <strong>{formatDate(data.tanggalMeninggal)}</strong></p>
-            <p>Tabuh : <strong>{(data.jamMeninggal || '...') + ' WIB'}</strong></p>
+          <p style={{ margin: '8px 0' }}>
+            Ingkang pidalem wonten ing Padukuhan <strong>{data.padukuhan || '...'}</strong>, Kalurahan {data.kalurahan || '...'}
+          </p>
+
+          <p style={{ fontWeight: '700', margin: '8px 0 4px' }}>
+            {data.statusAlmarhum === 'almarhum' ? 'Almarhum' : 'Almarhumah'} Seda Rikala:
+          </p>
+          <div style={{ margin: '4px 0 12px', paddingLeft: '40px' }}>
+            {[
+              { label: 'Dinten', value: data.hariMeninggal || '...' },
+              { label: 'Tanggal', value: formatDate(data.tanggalMeninggal) },
+              { label: 'Jam', value: (data.jamMeninggal || '...') + ' WIB' },
+            ].map(({ label, value }) => (
+              <div key={label} style={{ display: 'grid', gridTemplateColumns: '90px 10px 1fr', margin: '2px 0' }}>
+                <span>{label}</span>
+                <span>:</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
           </div>
 
-          <div style={{ margin: '15px 0', textAlign: 'center' }}>
-            <p style={{ fontWeight: '700', marginBottom: '2px' }}>Jenazah badhe dipun sarekaken wonten ing:</p>
-            <p>Dinten : <strong>{data.hariPemakaman || '...'}</strong></p>
-            <p>Tanggal : <strong>{formatDate(data.tanggalPemakaman)}</strong></p>
-            <p>Tabuh : <strong>{(data.jamPemakaman || '...') + ' WIB'}</strong></p>
-            <p>Makam : <strong>{data.makamLengkap || '...'}</strong></p>
+          <p style={{ fontWeight: '700', margin: '8px 0 4px' }}>Jenazah badhe dipun sarekaken wonten ing:</p>
+          <div style={{ margin: '4px 0 12px', paddingLeft: '40px' }}>
+            {[
+              { label: 'Dinten', value: data.hariPemakaman || '...' },
+              { label: 'Tanggal', value: formatDate(data.tanggalPemakaman) },
+              { label: 'Wanci Jam', value: (data.jamPemakaman || '...') + ' WIB' },
+              { label: 'Makam', value: data.makamLengkap || '...' },
+            ].map(({ label, value }) => (
+              <div key={label} style={{ display: 'grid', gridTemplateColumns: '90px 10px 1fr', margin: '2px 0' }}>
+                <span>{label}</span>
+                <span>:</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
           </div>
 
-          <p style={{ textAlign: 'center', margin: '15px 0' }}>Mekaten pawartos lelayu punika, mugi saged dados kawuningan.</p>
+          <p style={{ margin: '8px 0' }}>Mekaten pawartos lelayu punika, mugi saged dados kawuningan.</p>
 
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
-            <p style={{ fontWeight: '700', marginBottom: '8px' }}>Ingkang Nandhang Sungkawa:</p>
+          <div style={{ marginTop: '12px' }}>
+            <p style={{ marginBottom: '6px' }}>Ingkang Nandhang Sungkawa:</p>
 
             {filteredPihakBerduka.length > 0 ? (() => {
               const longName = filteredPihakBerduka.some(p => p.nama.length > 22);
-              const containerWidth = longName ? '60%' : '40%';
-
+              const containerWidth = longName ? '80%' : '60%';
               return (
-                <div style={{
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center'
-                }}>
-                  <div style={{ width: containerWidth }}>
-                    {filteredPihakBerduka.map((p, index) => (
-                      <div
-                        key={index}
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'baseline',
-                          width: '100%',
-                          marginBottom: '4px',
-                          gap: '24px',
-                        }}
-                      >
-                        <p style={{
-                          fontWeight: '600',
-                          fontSize: '17px',
-                          margin: 0,
-                          textAlign: 'left',
-                          wordBreak: 'break-word',
-                          flex: '1'
-                        }}>
-                          {p.nama}
-                        </p>
-                        <p style={{
-                          fontSize: '15px',
-                          fontStyle: 'italic',
-                          color: '#555555',
-                          margin: 0,
-                          textAlign: 'right',
-                          whiteSpace: 'nowrap'
-                        }}>
-                          {p.hubungan ? `(${p.hubungan})` : ''}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                <div style={{ width: containerWidth }}>
+                  {filteredPihakBerduka.map((p, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'baseline',
+                        marginBottom: '3px',
+                        gap: '16px',
+                      }}
+                    >
+                      <p style={{ fontWeight: '700', fontSize: '1em', margin: 0, textAlign: 'left', wordBreak: 'break-word', flex: '1' }}>
+                        {p.nama}
+                      </p>
+                      <p style={{ fontSize: '0.93em', fontStyle: 'italic', color: '#333333', margin: 0, textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        {p.hubungan ? `(${p.hubungan})` : ''}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               );
-            })() : <p className="italic text-gray-400">(Data Keluarga Kosong)</p>}
+            })() : null}
 
-            <p style={{ fontWeight: '700', marginTop: '10px' }}>Lan sedaya kulawarga</p>
+            <p style={{ fontWeight: '700', marginTop: '8px', textDecoration: 'underline' }}>Lan sedaya kulawarga</p>
           </div>
 
-          <p style={{ textAlign: 'center', marginTop: '20px' }}>Wassalamu'alaikum Wr. Wb.</p>
+          <p style={{ marginTop: '16px', fontStyle: 'italic' }}>Wassalamu'alaikum Wr. Wb.</p>
         </div>
       </div>
 
