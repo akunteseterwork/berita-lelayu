@@ -177,7 +177,7 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
 
             {filteredPihakBerduka.length > 0 ? (() => {
               const longName = filteredPihakBerduka.some(p => p.nama.length > 22);
-              const containerWidth = longName ? '80%' : '60%';
+              const containerWidth = longName ? '60%' : '40%';
 
               return (
                 <div style={{
