@@ -155,9 +155,9 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             <p style={{ fontWeight: '800', fontSize: '1.4em', letterSpacing: '2px', textDecoration: 'underline' }}>PAWARTOS LELAYU</p>
           </div>
 
-          <p style={{ marginBottom: '8px' }}>Assalamualaikum Wr. Wb.</p>
+          <p style={{ textAlign: 'center', marginBottom: '8px' }}>Assalamualaikum Wr. Wb.</p>
 
-          <div style={{ margin: '8px 0' }}>
+          <div style={{ textAlign: 'center', margin: '8px 0' }}>
             <p style={{ fontWeight: '700', fontSize: '1.3em', marginBottom: '2px' }}>إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
             <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#555555' }}>INNALILLAHI WA INNA ILAIHI ROJI'UN</p>
           </div>
@@ -242,7 +242,7 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             <p style={{ fontWeight: '700', marginTop: '8px', textDecoration: 'underline' }}>Lan sedaya kulawarga</p>
           </div>
 
-          <p style={{ marginTop: '16px', fontStyle: 'italic' }}>Wassalamu'alaikum Wr. Wb.</p>
+          <p style={{ marginTop: '20px', textAlign: 'center', fontStyle: 'italic' }}>Wassalamu'alaikum Wr. Wb.</p>
         </div>
       </div>
 
