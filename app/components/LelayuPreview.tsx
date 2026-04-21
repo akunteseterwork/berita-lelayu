@@ -19,6 +19,7 @@ interface LelayuData {
   hariMeninggal: string;
   tanggalMeninggal: string;
   jamMeninggal: string;
+  lokasiMeninggal: string;
   hariPemakaman: string;
   tanggalPemakaman: string;
   jamPemakaman: string;
@@ -181,8 +182,9 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
               { label: 'Dinten', value: data.hariMeninggal || '...' },
               { label: 'Tanggal', value: formatDate(data.tanggalMeninggal) },
               { label: 'Jam', value: (data.jamMeninggal || '...') + ' WIB' },
+              ...(data.lokasiMeninggal ? [{ label: 'Wonten Ing', value: data.lokasiMeninggal }] : []),
             ].map(({ label, value }) => (
-              <div key={label} style={{ display: 'grid', gridTemplateColumns: '90px 10px 1fr', margin: '2px 0' }}>
+              <div key={label} style={{ display: 'grid', gridTemplateColumns: '110px 10px 1fr', margin: '2px 0' }}>
                 <span>{label}</span>
                 <span>:</span>
                 <strong>{value}</strong>
@@ -198,7 +200,7 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
               { label: 'Wanci Jam', value: (data.jamPemakaman || '...') + ' WIB' },
               { label: 'Makam', value: data.makamLengkap || '...' },
             ].map(({ label, value }) => (
-              <div key={label} style={{ display: 'grid', gridTemplateColumns: '90px 10px 1fr', margin: '2px 0' }}>
+              <div key={label} style={{ display: 'grid', gridTemplateColumns: '110px 10px 1fr', margin: '2px 0' }}>
                 <span>{label}</span>
                 <span>:</span>
                 <strong>{value}</strong>

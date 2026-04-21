@@ -28,6 +28,7 @@ interface LelayuData {
   hariMeninggal: string;
   tanggalMeninggal: string;
   jamMeninggal: string;
+  lokasiMeninggal: string;
   hariPemakaman: string;
   tanggalPemakaman: string;
   jamPemakaman: string;
@@ -44,6 +45,7 @@ const initialData: LelayuData = {
   hariMeninggal: '',
   tanggalMeninggal: '',
   jamMeninggal: '',
+  lokasiMeninggal: '',
   hariPemakaman: '',
   tanggalPemakaman: '',
   jamPemakaman: '',
@@ -233,11 +235,12 @@ export default function SubmitLelayuPage() {
           </section>
 
           <section>
-            <SectionHeader title="Waktu Meninggal" icon={Clock} />
+            <SectionHeader title="Waktu & Tempat Meninggal" icon={Clock} />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FormInput label="Hari (Jawa/Umum)" name="hariMeninggal" value={formData.hariMeninggal} onChange={handleChange} placeholder="Contoh: Rebo Pahing" required={true} />
               <FormInput label="Tanggal" name="tanggalMeninggal" type="date" value={formData.tanggalMeninggal} onChange={handleChange} required={true} />
               <FormInput label="Jam Meninggal (WIB)" name="jamMeninggal" value={formData.jamMeninggal} onChange={handleChange} placeholder="Contoh: 21:00 (tanpa WIB)" required={true} />
+              <FormInput label="Lokasi Meninggal" name="lokasiMeninggal" value={formData.lokasiMeninggal} onChange={handleChange} placeholder="Contoh: RSUD Wates (Opsional)" />
             </div>
           </section>
 

@@ -18,6 +18,7 @@ model BeritaLelayu {
   hariMeninggal   String
   tanggalMeninggal String
   jamMeninggal    String
+  lokasiMeninggal String?
   hariPemakaman   String
   tanggalPemakaman String
   jamPemakaman    String

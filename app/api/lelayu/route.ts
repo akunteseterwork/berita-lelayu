@@ -20,6 +20,7 @@ export async function POST(request: Request) {
     const newEntry = await prisma.beritaLelayu.create({
       data: {
         ...lelayuData,
+        lokasiMeninggal: lelayuData.lokasiMeninggal || null,
         usia: usiaInt, 
         
         pihakBerduka: {
