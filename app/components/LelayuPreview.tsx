@@ -159,7 +159,6 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
           <p style={{ textAlign: 'center', marginBottom: '8px' }}>Assalamualaikum Wr. Wb.</p>
 
           <div style={{ textAlign: 'center', margin: '8px 0' }}>
-            <p style={{ fontWeight: '700', fontSize: '1.3em', marginBottom: '2px' }}>إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
             <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#555555' }}>INNALILLAHI WA INNA ILAIHI ROJI'UN</p>
           </div>
 
