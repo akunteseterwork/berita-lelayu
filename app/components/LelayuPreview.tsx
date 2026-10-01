@@ -207,7 +207,7 @@ const LelayuPreview: React.FC<LelayuPreviewProps> = ({ data }) => {
             ))}
           </div>
 
-          <p style={{ margin: '8px 0' }}>Mekaten pawartos lelayu punika, mugi saged dados kawuningan.</p>
+          <p style={{ margin: '8px 0' }}>Mekaten atur pawartos lelayu menika. Awit saking kawigatosanipun, kulawarga ngaturaken agenging maturnuwun.</p>
 
           <div style={{ marginTop: '12px' }}>
             <p style={{ marginBottom: '6px' }}>Ingkang Nandhang Sungkawa:</p>
